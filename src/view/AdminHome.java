@@ -16,15 +16,19 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class AdminHome extends JFrame{
 
 	private JPanel contentPane;
+	private static AdminHome adminHome;
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AdminHome adminHome = new AdminHome();
+					adminHome = new AdminHome();
 					centreWindow(adminHome);
 					adminHome.setVisible(true);
 
@@ -42,7 +46,8 @@ public class AdminHome extends JFrame{
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		setSize(600, 450);
+		setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		//setUndecorated(true);
 		setTitle("Admin Home");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -60,6 +65,34 @@ public class AdminHome extends JFrame{
 
 		panel.setLayout(null);
 		
+		JMenuBar adminBar = new JMenuBar();
+		
+		JMenu book = new JMenu("BOOK INFORMATION");
+		adminBar.add(book);
+		JMenuItem bookDetails = new JMenuItem("Book Details");
+		book.add(bookDetails);
+		JMenuItem searchBook = new JMenuItem("Search Book");
+		book.add(searchBook);
+		JMenuItem addBook = new JMenuItem("Add New Book");
+		book.add(addBook);
+		JMenuItem deleteBook = new JMenuItem("Modify/Delete Book");
+		book.add(deleteBook);
+		
+		
+		JMenu student = new JMenu("STUDENT INFORMATION");
+		adminBar.add(student);
+		JMenu issue = new JMenu("ISSUE DATE");
+		adminBar.add(issue);
+		//Setting Menu
+		JMenu setting = new JMenu("SETTING");
+		adminBar.add(setting);
+		//Setting Menu Items
+		JMenuItem logout = new JMenuItem("Logout");
+		setting.add(logout);
+		
+		
+		adminHome.setJMenuBar(adminBar);
+		//panel.add(adminBar);
 		/*JLabel headLabel = new JLabel("Welcome To Library Management System");
 		headLabel.setBounds(70, 50, 450, 30);
 		Font font = new Font("Serif", Font.BOLD, 18);
