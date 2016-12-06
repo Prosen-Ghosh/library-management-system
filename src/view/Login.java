@@ -24,20 +24,20 @@ public class Login extends JFrame {
 
 	private JPanel contentPane;
 	private static Login login;
-	private static JPasswordField userPassword;
-	private static JTextField userName;
+	private JPasswordField userPassword;
+	private JTextField userName;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					login = new Login();
-					centreWindow(login);
+					
 					login.setVisible(true);
 
-					JPanel panel = new JPanel();
-					login.add(panel);
-					placeComponents(panel);
+					
+					
+					
 					login.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,15 +55,19 @@ public class Login extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		this.centreWindow(this);
+		JPanel panel = new JPanel();
+		this.placeComponents(panel);
+		this.add(panel);
 	}
-	public static void centreWindow(Window frame) {
+	public void centreWindow(Window frame) {
 	    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
 	    int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
 	    frame.setLocation(x, y);
 	}
 
-	private static void placeComponents(JPanel panel) {
+	private void placeComponents(JPanel panel) {
 
 		panel.setLayout(null);
 		
@@ -96,6 +100,7 @@ public class Login extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				UserController UC = new UserController();
 				if(UC.checkAuthenticUser(userName.getText().toString(),userPassword.getText().toString())){
+					
 					AdminHome adminHOme = new AdminHome();
 					adminHOme.setVisible(true);
 					login.setVisible(false);

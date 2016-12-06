@@ -3,18 +3,13 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -29,12 +24,6 @@ public class AdminHome extends JFrame{
 			public void run() {
 				try {
 					adminHome = new AdminHome();
-					centreWindow(adminHome);
-					adminHome.setVisible(true);
-
-					JPanel panel = new JPanel();
-					adminHome.add(panel);
-					placeComponents(panel);
 					adminHome.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,81 +42,65 @@ public class AdminHome extends JFrame{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		this.setComponents();
 	}
-	
-	public static void centreWindow(Window frame) {
-	    Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
-	    int x = (int) ((dimension.getWidth() - frame.getWidth()) / 2);
-	    int y = (int) ((dimension.getHeight() - frame.getHeight()) / 2);
-	    frame.setLocation(x, y);
-	}
-	private static void placeComponents(JPanel panel) {
 
-		panel.setLayout(null);
+	private void setComponents() {
 		
 		JMenuBar adminBar = new JMenuBar();
 		
-		JMenu book = new JMenu("BOOK INFORMATION");
+		JMenu book = new JMenu("BOOK");
 		adminBar.add(book);
+		//panel.add(adminBar);
 		JMenuItem bookDetails = new JMenuItem("Book Details");
 		book.add(bookDetails);
 		JMenuItem searchBook = new JMenuItem("Search Book");
 		book.add(searchBook);
 		JMenuItem addBook = new JMenuItem("Add New Book");
 		book.add(addBook);
-		JMenuItem deleteBook = new JMenuItem("Modify/Delete Book");
-		book.add(deleteBook);
+		JMenuItem modifyDeleteBook = new JMenuItem("Modify/Delete Book");
+		book.add(modifyDeleteBook);
 		
-		
-		JMenu student = new JMenu("STUDENT INFORMATION");
+		//Student Menu
+		JMenu student = new JMenu("STUDENT");
 		adminBar.add(student);
-		JMenu issue = new JMenu("ISSUE DATE");
+		// Student Menu Items
+		JMenuItem studentDetails = new JMenuItem("Student Details");
+		student.add(studentDetails);
+		JMenuItem searchStudent = new JMenuItem("Search Student");
+		student.add(searchStudent);
+		JMenuItem addStudent = new JMenuItem("Add New Student");
+		student.add(addStudent);
+		JMenuItem modifyDeleteStudent = new JMenuItem("Modify/Delete Student");
+		student.add(modifyDeleteStudent);
+		
+		// Issue Menu
+		JMenu issue = new JMenu("ISSUE");
 		adminBar.add(issue);
+		// Issue Menu Items
+		JMenuItem issuedBook = new JMenuItem("Issued Book");
+		issue.add(issuedBook);
+		JMenuItem returnBook = new JMenuItem("Return Book");
+		issue.add(returnBook);
+		
 		//Setting Menu
 		JMenu setting = new JMenu("SETTING");
 		adminBar.add(setting);
 		//Setting Menu Items
+		JMenuItem profile = new JMenuItem("Profile");
+		setting.add(profile);
 		JMenuItem logout = new JMenuItem("Logout");
 		setting.add(logout);
-		
-		
-		adminHome.setJMenuBar(adminBar);
-		//panel.add(adminBar);
-		/*JLabel headLabel = new JLabel("Welcome To Library Management System");
-		headLabel.setBounds(70, 50, 450, 30);
-		Font font = new Font("Serif", Font.BOLD, 18);
-		headLabel.setFont(font);
-		panel.add(headLabel);
-		
-		JLabel userLabel = new JLabel("User Name:");
-		userLabel.setBounds(140, 150, 90, 25);
-		panel.add(userLabel);
-
-		JTextField userText = new JTextField(20);
-		userText.setBounds(250, 150, 160, 25);
-		panel.add(userText);
-
-		JLabel passwordLabel = new JLabel("Password:");
-		passwordLabel.setBounds(140, 180, 90, 25);
-		panel.add(passwordLabel);
-
-		JPasswordField passwordText = new JPasswordField(20);
-		passwordText.setBounds(250, 180, 160, 25);
-		panel.add(passwordText);
-
-		JButton loginButton = new JButton("Login");
-		loginButton.setBounds(205, 250, 100, 35);
-		loginButton.addActionListener(new ActionListener() {
+		logout.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				AdminHome adminHOme = new AdminHome();
-				adminHOme.setVisible(true);
+				Login login = new Login();
+				login.setVisible(true);
+				adminHome.setVisible(false);
+				adminHome.dispose();
 			}
 		});
-		panel.add(loginButton);
 		
-		JButton registerButton = new JButton("Register");
-		registerButton.setBounds(305, 250, 100, 35);
-		panel.add(registerButton);*/
+		this.setJMenuBar(adminBar);
 	}
 }
