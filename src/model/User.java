@@ -8,6 +8,7 @@ import java.sql.Statement;
 public class User {
 	Statement st;
 	Connection conn;
+	
 	public boolean isAuthentictUser(String userName,String password){
 		try{
 			conn = Connector.connector();

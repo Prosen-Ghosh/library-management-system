@@ -32,12 +32,6 @@ public class Login extends JFrame {
 			public void run() {
 				try {
 					login = new Login();
-					
-					login.setVisible(true);
-
-					
-					
-					
 					login.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,14 +41,14 @@ public class Login extends JFrame {
 	}
 	public Login() {
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		setSize(600, 400);
-		setTitle("Login");
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setBounds(100, 100, 450, 300);
+		this.setSize(600, 400);
+		this.setTitle("Login");
+		this.contentPane = new JPanel();
+		this.contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		this.contentPane.setLayout(new BorderLayout(0, 0));
+		this.setContentPane(contentPane);
 		this.centreWindow(this);
 		JPanel panel = new JPanel();
 		this.placeComponents(panel);
